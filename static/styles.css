@@ -1,0 +1,304 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-size: 35px;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    height: 5%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 10%; /* Adjust the width as needed */
+    height: 5%; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures responsiveness */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 60px;
+}
+
+.auth-buttons button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.sign-in-left {
+    margin-right: 30px;
+    margin-left: 20px;
+}
+
+/* Profile Circle and Dropdown Styles */
+/* Profile Circle and Dropdown Styles */
+#user-profile {
+    position: relative;
+    display: none; /* Hidden by default, matches JS initial state */
+    margin-left: 20px; /* Add margin to separate from other elements */
+}
+
+.profile-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #ff6600;
+    color: white; /* Ensure text is white */
+    border-radius: 50%;
+    margin-right: 1rem;
+    text-align: center;
+    font-size: 20px; /* Should fit, but can test with 18px if needed */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Removed line-height: 40px; to rely on flex centering */
+}
+
+/* Rest of the dropdown styles remain unchanged */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    z-index: 1;
+    right: 0;
+    top: 50px; /* Position below the profile circle */
+}
+
+.dropdown-content a {
+    color: rgb(32, 32, 32);
+    padding: 7px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Hero Section Styles */
+.hero {
+    background: url('1.jpeg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.get-started {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+/* Main Content Container */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap: 40px; /* Space between sections */
+}
+
+/* Box Styles for About Us, Features, and Technology */
+#about, #features, #Technology {
+    background-color: white;
+    border: 3px solid #ff6600; /* Orange border */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px;
+    max-width: 1000px; /* Adjust width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+    opacity: 0; /* Initially hidden */
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between image and content */
+}
+
+#features {
+    width: 20rem;
+}
+
+#Technology {
+    width: 20rem;
+}
+
+/* White Border Around Each Box */
+#about::before, #features::before, #Technology::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid white; /* White border */
+    border-radius: 20px; /* Slightly larger radius */
+    z-index: -1; /* Place behind the box */
+}
+
+/* Image Inside Each Box */
+.box-image {
+    width: 300px; /* Fixed width for images */
+    height: 200px; /* Fixed height for images */
+    border-radius: 10px;
+    object-fit: cover; /* Ensure the image covers the area */
+}
+
+/* About Us Image on the Right */
+#about .box-image {
+    order: 2; /* Move image to the right */
+}
+
+/* Features Image on the Left */
+#features .box-image {
+    order: 1; /* Move image to the left */
+}
+
+/* Technology Image on the Right */
+#Technology .box-image {
+    order: 2; /* Move image to the right */
+}
+
+/* Initial position for About Us and Technology (left to right) */
+#about, #Technology {
+    transform: translateX(-100%); /* Start from the left */
+}
+
+/* Initial position for Features (left to right, but will move to the right) */
+#features {
+    transform: translateX(-100%); /* Start from the left */
+}
+
+/* Animation for About Us (left to right) */
+#about.visible {
+    opacity: 1;
+    transform: translateX(0); /* Move to the left side */
+}
+
+/* Animation for Features (left to right, then hold at the right) */
+#features.visible {
+    opacity: 1;
+    transform: translateX(calc(100vw - 100% - 80px)); /* Move to the right side */
+}
+
+/* Animation for Technology (left to right) */
+#Technology.visible {
+    opacity: 1;
+    transform: translateX(0); /* Move to the left side */
+}
+
+/* Hover Effect */
+#about:hover, #features:hover, #Technology:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Footer Styles */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Popup Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+}
+
+.popup p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.popup button {
+    margin: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#confirmLogout {
+    background-color: #28a745;
+    color: white;
+}
+
+#confirmLogout:hover {
+    background-color: #218838;
+}
+
+#cancelLogout {
+    background-color: #dc3545;
+    color: white;
+}
+
+#cancelLogout:hover {
+    background-color: #c82333;
+}
